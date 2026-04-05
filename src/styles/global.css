@@ -242,13 +242,26 @@ main {
   color: var(--color-text-soft);
 }
 .desktop-nav a:hover { color: var(--color-accent); background: rgba(255,107,0,0.07); }
-.header-cta { display: flex; gap: 10px; align-items: center; }
+.header-cta {
+  display: flex; gap: 10px; align-items: center;
+  /* Verhindert, dass die CTA-Gruppe über den verfügbaren Platz hinauswächst */
+  min-width: 0;
+  flex-shrink: 1;
+}
 .header-cta .button { min-height: 40px; padding: 0 16px; font-size: 0.82rem; }
+
+/* WhatsApp-Button im Header: darf sich einengen, aber nie abgeschnitten werden */
+.header-cta .button-primary {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
 
 .hamburger {
   display: flex; flex-direction: column; justify-content: center; gap: 5px;
   width: 44px; height: 44px; padding: 10px;
   border-radius: var(--radius);
+  flex-shrink: 0;
 }
 .hamburger span {
   display: block; height: 2px; background: var(--color-text);
@@ -739,17 +752,27 @@ main {
   .brand-text small {
     display: none;
   }
+  .header-cta {
+    gap: 6px;
+    /* Verhindert, dass die CTA-Gruppe den verfügbaren Platz überschreitet */
+    overflow: hidden;
+    flex-shrink: 1;
+    min-width: 0;
+  }
   .header-cta .button-primary {
     padding: 0 12px;
     font-size: 0.78rem;
     min-height: 38px;
     letter-spacing: 0.04em;
+    /* Button darf schrumpfen, aber nie abgeschnitten werden */
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .header-cta .button-primary svg {
     flex-shrink: 0;
-  }
-  @media (max-width: 400px) {
-    .header-cta .button-primary span { display: none; }
   }
 
   /* ── Hero: volle Breite, kein overflow ── */
@@ -886,6 +909,21 @@ main {
     height: 52px;
     right: 16px;
     bottom: 16px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — SEHR KLEINE SCREENS (≤400px)
+   Button-Text ausblenden, nur Icon zeigen —
+   verhindert jedes Clipping auf winzigen Screens.
+───────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .header-cta .button-primary .btn-label {
+    display: none;
+  }
+  .header-cta .button-primary {
+    padding: 0 10px;
+    gap: 0;
   }
 }
 
