@@ -73,15 +73,15 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   .bike-image-wrap {
     width: 100%;
     margin-block: 1rem 1.25rem;
-    border-radius: 8px;
-    overflow: hidden;
+    background: transparent;
   }
 
   .bike-photo {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
-    border-radius: 8px;
+    object-fit: contain;
+    background: transparent;
+    mix-blend-mode: lighten;
   }
 </style>
