@@ -1,5 +1,6 @@
 ---
 import { business } from '../data/site';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <section class="section" id="bikes">
@@ -19,6 +20,16 @@ import { business } from '../data/site';
             <span class="badge badge-orange">Manual Gearbox</span>
             <span class="badge badge-dark">150cc Engine</span>
             <span class="badge badge-red">Licence Required</span>
+          </div>
+          <div class="bike-image-wrap">
+            <img
+              src={`${base}Bajaj%20Bike.png`}
+              alt="Bajaj Avenger 150 — manual cruiser motorcycle"
+              width="600"
+              height="380"
+              loading="lazy"
+              class="bike-photo"
+            />
           </div>
           <h3 class="bike-name">{business.bike.model}</h3>
           <p class="bike-tagline">A cruiser-style manual motorcycle built for south coast Sri Lanka.</p>
@@ -57,3 +68,20 @@ import { business } from '../data/site';
     </div>
   </div>
 </section>
+
+<style>
+  .bike-image-wrap {
+    width: 100%;
+    margin-block: 1rem 1.25rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .bike-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+</style>
