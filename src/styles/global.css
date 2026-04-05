@@ -291,6 +291,7 @@ main { overflow-x: clip; }
   letter-spacing: 0.1em; text-transform: uppercase;
   margin-bottom: 20px;
   width: fit-content;
+  max-width: 100%;
 }
 .hero-kicker span { width: 6px; height: 6px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; }
 .hero h1 {
@@ -677,7 +678,8 @@ main { overflow-x: clip; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ─────────────────────────────────────────────
-   RESPONSIVE
+   RESPONSIVE — DESKTOP (≥900px)
+   Alle Desktop-spezifischen Layouts hier.
 ───────────────────────────────────────────── */
 @media (min-width: 900px) {
   .desktop-nav { display: flex; }
@@ -691,6 +693,205 @@ main { overflow-x: clip; }
 }
 @media (max-width: 899px) {
   .header-cta .button-secondary { display: none; }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — MOBILE (≤600px)
+   Nur Mobile-Fixes ohne Desktop zu beeinflussen.
+───────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* ── Header: kompakter auf kleinen Screens ── */
+  .header-inner {
+    gap: 8px;
+    min-height: 64px;
+    padding-inline: 4px;
+  }
+  .brand-text small {
+    display: none; /* Untertitel ausblenden um Platz zu sparen */
+  }
+  /* Nur Icon + "Book" Text im Header-CTA */
+  .header-cta .button-primary {
+    padding: 0 12px;
+    font-size: 0.78rem;
+    min-height: 38px;
+    letter-spacing: 0.04em;
+  }
+  .header-cta .button-primary svg {
+    flex-shrink: 0;
+  }
+  /* Verstecke "Book via WhatsApp" Text, zeige nur Icon auf sehr kleinen Screens */
+  @media (max-width: 400px) {
+    .header-cta .button-primary span { display: none; }
+  }
+
+  /* ── Hero: volle Breite, kein overflow ── */
+  .hero {
+    min-height: auto;
+    padding-block: 0;
+  }
+  .hero-inner {
+    padding-block: clamp(2rem, 5vw, 3rem);
+    gap: 2rem;
+    width: min(calc(100% - 24px), var(--container));
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 0.9;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 0.97rem;
+    margin-bottom: 20px;
+  }
+  .hero-kicker {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+    letter-spacing: 0.06em;
+    /* Erlaubt Umbruch bei sehr kleinen Screens */
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-pills {
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .hero-pills li {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    /* Erlaubt Umbruch bei langen Texten */
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .hero-disclaimer {
+    font-size: 0.75rem;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Hero Card: volle Breite, kompakteres Padding */
+  .hero-card-wrap .card {
+    padding: 20px;
+  }
+  .hero-card-row {
+    font-size: 0.85rem;
+  }
+  .hero-card-row strong {
+    font-size: 0.85rem;
+  }
+
+  /* ── Allgemeine Sektion-Abstände ── */
+  .section {
+    padding-block: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  /* ── Cards: weniger Padding auf Mobile ── */
+  .card {
+    padding: 20px;
+  }
+  .terms-card,
+  .contact-card,
+  .process-card {
+    padding: 20px;
+  }
+
+  /* ── Bike-Specs-Grid: 2 Spalten auf Mobile ── */
+  .bike-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bike-card-header,
+  .bike-card-body {
+    padding: 20px 20px 0;
+  }
+  .bike-card-body {
+    padding-bottom: 20px;
+  }
+
+  /* ── Contact: Buttons als Spalte ── */
+  .contact-actions {
+    flex-direction: column;
+  }
+  .contact-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── FAQ: kleineres Padding ── */
+  .faq-item summary {
+    padding: 16px 18px;
+    font-size: 0.9rem;
+  }
+  .faq-answer {
+    padding: 0 18px 16px;
+    font-size: 0.88rem;
+  }
+
+  /* ── Footer ── */
+  .footer-grid {
+    gap: 28px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ── Section Head ── */
+  .section-head h2 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  /* ── Trust Bar: kleineres Padding ── */
+  .trust-item {
+    padding: 14px 18px;
+    font-size: 0.78rem;
+  }
+
+  /* ── WhatsApp Float: etwas kleiner auf sehr kleinen Screens ── */
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — MITTELGROSSE SCREENS (601–899px)
+   Tablets und grosse Handys im Landscape
+───────────────────────────────────────────── */
+@media (min-width: 601px) and (max-width: 899px) {
+  .hero {
+    min-height: auto;
+  }
+  .hero-inner {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  /* Bike specs: 3-spaltig auf Tablet */
+  .bike-specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* Process: 2-spaltig auf Tablet */
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-actions .button {
+    flex: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
