@@ -3,7 +3,6 @@ export const business = {
   owner: 'Paranamanage Prasad Asintha',
   email: 'pmpasintha@gmail.com',
   phone: '+94 77 558 6424',
-  phoneSecondary: '+94 77 183 5424',
   whatsapp: 'https://wa.me/94775586424',
   callLink: 'tel:+94775586424',
   address: 'No. 43 Abimana Gama Road, Galle, Sri Lanka',
