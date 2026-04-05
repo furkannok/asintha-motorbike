@@ -1,6 +1,6 @@
 ---
 import { business, navLinks } from '../data/site';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <header class="site-header" id="top">
