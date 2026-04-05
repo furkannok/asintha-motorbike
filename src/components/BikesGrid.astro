@@ -1,0 +1,59 @@
+---
+import { business } from '../data/site';
+---
+
+<section class="section" id="bikes">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our fleet</span>
+      <h2>One real bike. <span>150cc manual.</span></h2>
+      <p>
+        We rent one thing: a proper motorcycle with a manual gearbox. No scooter alternatives, no automatic options. The current fleet is the Bajaj Avenger 150.
+      </p>
+    </div>
+
+    <div class="bikes-grid reveal">
+      <article class="card bike-main-card">
+        <div class="bike-card-header">
+          <div class="badge-row">
+            <span class="badge badge-orange">Manual Gearbox</span>
+            <span class="badge badge-dark">150cc Engine</span>
+            <span class="badge badge-red">Licence Required</span>
+          </div>
+          <h3 class="bike-name">{business.bike.model}</h3>
+          <p class="bike-tagline">A cruiser-style manual motorcycle built for south coast Sri Lanka.</p>
+        </div>
+
+        <div class="bike-card-body">
+          <dl class="bike-specs-grid">
+            <div class="spec-item">
+              <dt>Engine</dt>
+              <dd>{business.bike.engine}</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Gearbox</dt>
+              <dd>Manual</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Clutch</dt>
+              <dd>Yes</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Type</dt>
+              <dd>Cruiser</dd>
+            </div>
+          </dl>
+
+          <p class="bike-desc">
+            The Bajaj Avenger 150 is a proper, low-slung cruiser motorcycle. It has a five-speed manual gearbox, a real clutch lever, and enough power to cover the south coast comfortably. This is the bike for experienced riders who want to explore Galle, Mirissa, Weligama, and Ahangama on their own terms.
+          </p>
+
+          <div class="upcoming-note">
+            <strong>More motorcycles being added</strong>
+            Future models may include Royal Enfield, Honda CB, and Yamaha FZ style bikes. All will be manual gearbox only.
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

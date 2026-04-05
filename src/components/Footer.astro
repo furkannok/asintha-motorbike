@@ -1,0 +1,51 @@
+---
+import { business, navLinks } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-logo">Asintha<br />Rent Motorbike</p>
+        <p class="footer-tagline">
+          Real motorcycles with a manual gearbox for experienced riders on Sri Lanka's south coast. Not a scooter rental.
+        </p>
+      </div>
+      <div>
+        <p class="footer-heading">Navigate</p>
+        <ul class="footer-list" role="list">
+          {navLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Rental terms</p>
+        <ul class="footer-list" role="list">
+          <li>Valid motorcycle licence required</li>
+          <li>Minimum age: 18 years</li>
+          <li>Deposit: 25,000 LKR</li>
+          <li>Return fuel: full tank</li>
+          <li>Renter liable for damage &amp; fines</li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Contact</p>
+        <ul class="footer-list" role="list">
+          <li><a href={business.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp booking</a></li>
+          <li><a href={business.callLink}>{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`}>{business.email}</a></li>
+          <li>
+            <a href={business.maps} target="_blank" rel="noopener noreferrer">
+              No. 43 Abimana Gama Rd, Galle
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Asintha Rent Motorbike · Galle, Sri Lanka</span>
+      <span>We only rent real motorcycles — manual gearbox, 100cc+</span>
+    </div>
+  </div>
+</footer>

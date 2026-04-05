@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import BikesGrid from '../components/BikesGrid.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import Process from '../components/Process.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+import { business, seo } from '../data/site';
+---
+
+<BaseLayout title={seo.title} description={seo.description} keywords={seo.keywords}>
+  <Header />
+
+  <main id="main-content">
+    <Hero />
+    <TrustBar />
+
+    <BikesGrid />
+    <SectionDivider flip />
+
+    <Process />
+    <SectionDivider />
+
+    <!-- Prices & Terms -->
+    <section class="section" id="prices">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Prices &amp; terms</span>
+          <h2>Clear conditions. <span>No surprises.</span></h2>
+          <p>
+            Pricing is handled directly over WhatsApp for daily, weekly, and monthly rentals. The rental conditions below apply to every booking.
+          </p>
+        </div>
+
+        <div class="terms-grid reveal">
+          <article class="terms-card">
+            <h3>Rental conditions</h3>
+            <ul class="terms-list" role="list">
+              <li>
+                <span>Licence</span>
+                <span>Valid motorcycle licence required</span>
+              </li>
+              <li>
+                <span>Minimum age</span>
+                <span>{business.terms.age}</span>
+              </li>
+              <li>
+                <span>Deposit</span>
+                <span>{business.terms.deposit} (refunded on return)</span>
+              </li>
+              <li>
+                <span>Fuel</span>
+                <span>Must be returned full</span>
+              </li>
+              <li>
+                <span>Liability</span>
+                <span>Renter responsible for damage, theft &amp; fines</span>
+              </li>
+              <li>
+                <span>Riding</span>
+                <span>No racing, no unauthorised off-road use</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="terms-card">
+            <h3>Booking &amp; pricing</h3>
+            <p style="color: var(--color-text-soft); font-size: 0.92rem; line-height: 1.75; margin-bottom: 20px;">
+              Daily, weekly, and monthly rates are available on WhatsApp. Long-stay rates are offered for extended south coast trips. Response is usually fast.
+            </p>
+            <a
+              class="button button-primary"
+              href={business.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="width: 100%; justify-content: center;"
+            >
+              Ask for pricing on WhatsApp
+            </a>
+            <div class="notice-box" style="margin-top: 20px;">
+              We do not rent scooters or automatic bikes.<br />
+              A valid motorcycle licence is required. This is not a scooter rental.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <SectionDivider flip />
+
+    <ServiceArea />
+    <SectionDivider />
+
+    <FAQ />
+    <SectionDivider flip />
+
+    <ContactSection />
+  </main>
+
+  <Footer />
+
+  <!-- Sticky WhatsApp button -->
+  <a
+    class="whatsapp-float"
+    href={business.whatsapp}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Book via WhatsApp"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.534 5.866L.063 23.998l6.297-1.45A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.784 9.784 0 0 1-5.016-1.374l-.36-.214-3.736.978.995-3.63-.235-.374A9.79 9.79 0 0 1 2.182 12c0-5.418 4.4-9.818 9.818-9.818s9.818 4.4 9.818 9.818-4.4 9.818-9.818 9.818z"/>
+    </svg>
+  </a>
+
+  <!-- Scroll reveal observer -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    reveals.forEach((el) => observer.observe(el));
+  </script>
+</BaseLayout>

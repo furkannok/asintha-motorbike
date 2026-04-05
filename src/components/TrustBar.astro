@@ -1,0 +1,23 @@
+---
+const items = [
+  'Real motorcycles only',
+  'Manual gearbox — not a scooter',
+  '150cc engine',
+  'Valid licence required',
+  'Min. age 18',
+  'Galle · Mirissa · Weligama · Ahangama',
+  '25,000 LKR deposit',
+  'WhatsApp booking',
+];
+---
+
+<section class="trust-bar" aria-label="Key rental facts">
+  <div class="trust-track" role="list">
+    {items.map((item) => (
+      <div class="trust-item" role="listitem">
+        <span class="trust-dot" aria-hidden="true"></span>
+        {item}
+      </div>
+    ))}
+  </div>
+</section>

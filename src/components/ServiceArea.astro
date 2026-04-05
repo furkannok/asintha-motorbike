@@ -1,0 +1,167 @@
+---
+import { business } from '../data/site';
+
+const areas = [
+  {
+    name: 'Galle',
+    subtitle: 'Home base',
+    desc: 'Pick up and return the motorcycle directly here. Galle Fort, the beaches, and the southern highway are all on your doorstep.',
+    keywords: 'Motorcycle rental Galle Fort',
+  },
+  {
+    name: 'Mirissa',
+    subtitle: '35 km east',
+    desc: 'Sri Lanka\'s whale-watching capital and one of the most popular stops on the south coast. A natural day trip or base for longer stays.',
+    keywords: 'Manual motorbike hire Mirissa',
+  },
+  {
+    name: 'Weligama',
+    subtitle: '30 km east',
+    desc: 'Surf town, bay views, and a mellow coastal atmosphere. Ideal for riders who want to explore further east after settling in.',
+    keywords: 'Real motorcycle rental Weligama',
+  },
+  {
+    name: 'Ahangama',
+    subtitle: '27 km east',
+    desc: 'A quiet surf village between Galle and Weligama. Popular with long-stay travellers and surfers who need a bike for the full season.',
+    keywords: 'Ahangama surf motorbike rental',
+  },
+];
+---
+
+<section class="section service-area-section" id="service-area">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Service area</span>
+      <h2>South coast <span>Sri Lanka.</span></h2>
+      <p>
+        The motorcycle is based in Galle and covers the entire south coast. Delivery and collection can be arranged for Mirissa, Weligama, and Ahangama — confirm details on WhatsApp.
+      </p>
+    </div>
+
+    <div class="area-grid">
+      {areas.map((area, i) => (
+        <article class="area-card reveal" style={`animation-delay: ${i * 0.08}s`}>
+          <div class="area-card-top">
+            <div>
+              <h3 class="area-name">{area.name}</h3>
+              <span class="area-subtitle">{area.subtitle}</span>
+            </div>
+            <span class="area-dot" aria-hidden="true"></span>
+          </div>
+          <p class="area-desc">{area.desc}</p>
+          <span class="area-keyword">{area.keywords}</span>
+        </article>
+      ))}
+    </div>
+
+    <div class="area-map-note reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span>
+        Based at {business.address}.
+        <a href={business.maps} target="_blank" rel="noopener noreferrer">Open on Google Maps →</a>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .area-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 28px;
+  }
+
+  .area-card {
+    padding: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .area-card:hover {
+    border-color: rgba(255,107,0,0.3);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+
+  .area-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .area-name {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .area-subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+  }
+
+  .area-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 6px;
+    box-shadow: 0 0 8px rgba(255,107,0,0.5);
+  }
+
+  .area-desc {
+    color: var(--color-text-soft);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .area-keyword {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-faint);
+    border-top: 1px solid var(--color-border-soft);
+    padding-top: 10px;
+  }
+
+  .area-map-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+  .area-map-note svg { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+  .area-map-note a { color: var(--color-accent); }
+  .area-map-note a:hover { text-decoration: underline; }
+
+  @media (max-width: 599px) {
+    .area-grid { grid-template-columns: 1fr; }
+  }
+</style>
